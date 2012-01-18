@@ -1,0 +1,20 @@
+#ifndef UI_Button_h
+#define UI_Button_h
+
+#include <Core/DisplayObject.h>
+
+
+
+namespace UI {
+
+class Button : public Core::DisplayObject {
+	public:
+		void draw();
+	private:
+
+
+};
+
+} /* End of namespace UI */
+
+#endif // UI_Button_h

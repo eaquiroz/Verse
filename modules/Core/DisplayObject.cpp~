@@ -1,0 +1,50 @@
+#include "DisplayObject.h"
+
+namespace Core {
+
+
+
+
+int DisplayObject::hitTestObject()
+{
+    return 0;
+}
+
+int DisplayObject::hitTestPoint()
+{
+    return 0;
+}
+
+void DisplayObject::draw()
+{
+	
+}
+
+void DisplayObject::render()
+{
+	draw();
+	for(int i=0; i<childs.size(); i++)
+	{
+		DisplayObject* child=childs[i];
+		child->render();	
+	}
+}
+
+void DisplayObject::addChild(DisplayObject* object)
+{
+	childs.push_back(object);
+}
+
+void DisplayObject::removeChild(DisplayObject* object)
+{
+	int i=0;
+	for(i=0; i<childs.size(); i++)
+	{
+		DisplayObject* testChild=childs[i];
+		if(testChild==object)
+			break;
+	}	
+	childs.erase(i);
+}
+
+} /* End of namespace Core */
