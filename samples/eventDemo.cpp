@@ -27,7 +27,17 @@ class MyApp: public Core::EventDispatcher{
 			//Create event
 			Events::Event e;
 			e.type="Custom";
-			dispatchEvent(e);			
+			dispatchEvent(e);
+
+			Events::Event e1;
+			e1.type="Custom";
+			e1.target=this;
+			dispatchEvent(e1);			
+			
+			Events::Event e2;
+			e2.type="Custom";
+			e2.target=new EventDispatcher();
+			dispatchEvent(e2);			
 			
 		}
 

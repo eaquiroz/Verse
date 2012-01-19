@@ -13,7 +13,8 @@ namespace Core {
 class EventCallback{
 	public:
 		Callback *callback;
-		std::string type;	
+		std::string type;
+		Object *target;	
 };
 
 class EventHandler : public Object {
@@ -23,7 +24,7 @@ class EventHandler : public Object {
     
     std::vector<EventCallback> eventList;
 	void dispatchEvent(Events::Event event);
-	void registerEvent(std::string eventType, Callback *callback);
+	void registerEvent(Object *target, std::string eventType, Callback *callback);
  
  protected:
  	EventHandler();

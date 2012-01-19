@@ -5,12 +5,13 @@ namespace Core {
 void EventDispatcher::addEventListener(std::string eventType,Callback *callback)
 {
 	EventHandler *eh=EventHandler::Instance();
-	eh->registerEvent(eventType, callback);
+	eh->registerEvent(this, eventType, callback);
 }
 
 void EventDispatcher::removeEventListener(std::string eventType,Callback *callback)
 {
 	EventHandler *eh=EventHandler::Instance();
+	//ToDo
 }
 
 void EventDispatcher::dispatchEvent(Events::Event event)

@@ -8,10 +8,12 @@
 namespace Events {
 
 class Event : public Core::Object {
-
+	
  public:
-    Object currentTarget;
+	Event();
+    Object *target;
     std::string type;
+
 };
 
 } /* End of namespace Events */
