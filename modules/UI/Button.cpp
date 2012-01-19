@@ -2,12 +2,12 @@
 
 namespace UI {
 
-Button::Button(string l, freetype::font_data* f ,Devices::Platform *p):DisplayObject(p)
+Button::Button(string l, freetype::font_data* f )
 {
 	type="Button"; 
 	
 	label=l;
-	textField=new TextField(label, f, p);
+	textField=new TextField(label, f);
 	
 	addChild(textField);
 	

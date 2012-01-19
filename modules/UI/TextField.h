@@ -22,7 +22,7 @@ using std::string;
 
 class TextField : public Core::DisplayObject {
 	public:
-		TextField(string label, freetype::font_data* f, Devices::Platform *p);
+		TextField(string label, freetype::font_data* f);
 		void draw();
 		string label;
 	private:

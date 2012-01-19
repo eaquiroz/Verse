@@ -2,7 +2,7 @@
 
 namespace UI {
 
-TextField::TextField(string l, freetype::font_data* f ,Devices::Platform *p):DisplayObject(p)
+TextField::TextField(string l, freetype::font_data* f )
 {
 	type="TextField";
 	

@@ -2,7 +2,6 @@
 #define Core_DisplayObject_h
 
 #include "EventDispatcher.h"
-#include <Devices/Platform.h>
 
 #include <vector>
 #ifdef __APPLE__
@@ -18,17 +17,18 @@ namespace Core {
 class DisplayObject : public EventDispatcher {
 
  public:
-	DisplayObject(Devices::Platform *p);
+    DisplayObject();
     virtual int hitTestObject();
     virtual int hitTestPoint();
     virtual void draw();
     void render();
-	void addChild(DisplayObject *object);
-	void removeChild(DisplayObject *object);
-	void setOrthographicProjection();
-  	void restorePerspectiveProjection();
-	void setBackgroundColor(int r, int g, int b);
-	void setColor(int r, int g, int b);
+    void addChild(DisplayObject *object);
+    void removeChild(DisplayObject *object);
+    void setOrthographicProjection();
+    void restorePerspectiveProjection();
+    void setBackgroundColor(int r, int g, int b);
+    void setColor(int r, int g, int b);
+ 
  public:
     int visible;
     int x;
@@ -47,10 +47,10 @@ class DisplayObject : public EventDispatcher {
     float fred,fgreen, fblue;
     int alpha;
     int blendMode;
-    Devices::Platform* platform;
     
   private:
   	std::vector<DisplayObject*> childs;
+        
 };
 
 } /* End of namespace Core */

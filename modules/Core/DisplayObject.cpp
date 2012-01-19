@@ -2,11 +2,9 @@
 
 namespace Core {
 
-
-DisplayObject::DisplayObject(Devices::Platform *p)
+DisplayObject::DisplayObject()
 {
 	type="DisplayObject";
-	platform= p;	
 	alpha=1;
 }
 
@@ -68,29 +66,33 @@ void DisplayObject::setColor(int r, int g, int b)
 
 
 void DisplayObject::setOrthographicProjection() {
+    
+    //Get viewport resolution
+    GLint viewport[4];
+    glGetIntegerv(GL_VIEWPORT, viewport);
 
-	// switch to projection mode
-	glMatrixMode(GL_PROJECTION);
+    // switch to projection mode
+    glMatrixMode(GL_PROJECTION);
 
-	// save previous matrix which contains the
-	//settings for the perspective projection
-	glPushMatrix();
+    // save previous matrix which contains the
+    //settings for the perspective projection
+    glPushMatrix();
 
-	// reset matrix
-	glLoadIdentity();
+    // reset matrix
+    glLoadIdentity();
 
-	// set a 2D orthographic projection
-	gluOrtho2D(0, platform->resolutionX, 0, platform->resolutionY);
+    // set a 2D orthographic projection
+    gluOrtho2D(0, viewport[2], 0, viewport[3]);
 
-	// invert the y axis, down is positive
-	glScalef(1, -1, 1);
+    // invert the y axis, down is positive
+    glScalef(1, -1, 1);
 
-	// mover the origin from the bottom left corner
-	// to the upper left corner
-	glTranslatef(0, -platform->resolutionY, 0);
+    // mover the origin from the bottom left corner
+    // to the upper left corner
+    glTranslatef(0, -viewport[3], 0);
 
-	// switch back to modelview mode
-	glMatrixMode(GL_MODELVIEW);
+    // switch back to modelview mode
+    glMatrixMode(GL_MODELVIEW);
 }
 
 void DisplayObject::restorePerspectiveProjection() {

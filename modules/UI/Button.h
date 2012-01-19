@@ -2,7 +2,6 @@
 #define UI_Button_h
 
 #include <Core/DisplayObject.h>
-#include <Devices/Platform.h>
 #include "Draw2D.h"
 #include "FreeType.h"
 #include "TextField.h"
@@ -23,7 +22,7 @@ using std::string;
 
 class Button : public Core::DisplayObject {
 	public:
-		Button(string label, freetype::font_data* f, Devices::Platform *p);
+		Button(string label, freetype::font_data* f);
 		void draw();
 		string label;
 		

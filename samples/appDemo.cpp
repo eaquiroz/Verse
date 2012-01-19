@@ -3,6 +3,7 @@
 #include <Core/DisplayObject.h>
 #include <Core/Callback.h>
 #include <Events/Event.h>
+#include <Events/MouseEvent.h>
 #include <UI/Button.h>
 #include <UI/TextField.h>
 #include <UI/FreeType.h>
@@ -15,12 +16,13 @@
 #endif
 
 using namespace std;
+using namespace Events;
 
 class MyApp: public Core::DisplayObject{
 	public:
-		MyApp(Devices::Platform *p) : Core::DisplayObject(p)
+		MyApp(Devices::Platform *p)
 		{ 
-			
+                    platform=p;
 		}
 		
 		void init()
@@ -36,7 +38,7 @@ class MyApp: public Core::DisplayObject{
 			addEventListener("click", &myCallBack);
 
 			//Init Button
-			b=new UI::Button("Button 1",&font ,platform);
+			b=new UI::Button("Button 1",&font);
 			b->x=-200;
 			b->y=0;
 			b->width=200;
@@ -47,7 +49,7 @@ class MyApp: public Core::DisplayObject{
 			addChild(b);
 			
 			//Init Button
-			b1=new UI::Button("Button 2",&font , platform);
+			b1=new UI::Button("Button 2",&font );
 			b1->x=-200;
 			b1->y=25;
 			b1->width=200;
@@ -57,7 +59,7 @@ class MyApp: public Core::DisplayObject{
 			addChild(b1);
 			
 			//Init Button
-			b2=new UI::Button("Button 3",&font , platform);
+			b2=new UI::Button("Button 3",&font );
 			b2->x=-200;
 			b2->y=50;
 			b2->width=200;
@@ -67,7 +69,7 @@ class MyApp: public Core::DisplayObject{
 			//Add to scene
 			addChild(b2);
 			
-			text=new UI::TextField("Augmate", &font2, platform);
+			text=new UI::TextField("Augmate", &font2);
 			text->x=0;
 			text->y=platform->resolutionY-20;
 			//text->setColor(75, 80, 85);
@@ -93,6 +95,38 @@ class MyApp: public Core::DisplayObject{
 			cout << "Event type: " << e.type << "\n";
 		}
 		
+                void mouseEvent(int button, int state, int x, int y)
+                {
+                    stringstream mouseInfo;
+                    mouseInfo << "Position: " << x << "," << y << " | State: " << state << " | Button: "<< button;
+                    text->label=mouseInfo.str();
+                    
+                    MouseEvent e;
+                    
+                    e.x=x;
+                    e.y=y;
+                    
+                    if(button==0){
+                        if(state)
+                            e.type=MouseEvent::MOUSE_UP;
+                        else
+                            e.type=MouseEvent::MOUSE_DOWN;
+                    }else if(button==1){
+                        if(state)
+                            e.type=MouseEvent::MIDDLE_MOUSE_UP;
+                        else
+                            e.type=MouseEvent::MIDDLE_MOUSE_DOWN;
+                    }else if(button==2){
+                        if(state)
+                            e.type=MouseEvent::RIGHT_MOUSE_UP;
+                        else
+                            e.type=MouseEvent::RIGHT_MOUSE_DOWN;
+                    }
+                    
+                    dispatchEvent(e);
+                    
+                }
+                
 		void run()
 		{
 			//Create event
@@ -111,6 +145,7 @@ class MyApp: public Core::DisplayObject{
 		int framenum;
 		freetype::font_data font;
 		freetype::font_data font2;
+                Devices::Platform *platform;
 		
 };
 
@@ -129,7 +164,10 @@ void initGL()
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
-
+void mouse(int button, int state, int x, int y)
+{
+    app->mouseEvent(button, state, x, y);
+}
 int main (int argc, char **argv)
 {
 	cout << "OpenGL-GLUT Sample Basic APP\n";
@@ -153,7 +191,8 @@ int main (int argc, char **argv)
 	glutCreateWindow("OpenGL-GLUT Sample Basic APP");
 
 	initGL();
-		
+        
+        glutMouseFunc(mouse);		
 	glutDisplayFunc(renderScene);
 	glutIdleFunc(renderScene);
 	// enter GLUT event processing cycle
