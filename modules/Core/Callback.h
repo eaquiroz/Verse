@@ -11,7 +11,7 @@ namespace Core {
 class Callback
 {
     public:
-        virtual void Execute(Events::Event Param) const =0;
+        virtual void Execute(Events::Event *Param) const =0;
 };
 
 
@@ -24,9 +24,9 @@ class TCallback : public Callback
             pFunction = 0;
         }
 
-        typedef void (cInstance::*tFunction)(Events::Event Param);
+        typedef void (cInstance::*tFunction)(Events::Event *Param);
         
-        virtual void Execute(Events::Event Param) const 
+        virtual void Execute(Events::Event *Param) const 
         {
             if (pFunction) (cInst->*pFunction)(Param);
             else std::cout << "ERROR : the callback function has not been defined !!!!";

@@ -5,10 +5,10 @@ namespace UI {
 void Draw2D::Rectangle(int x, int y, int width, int height)
 {
 	glBegin(GL_QUADS);
-	glVertex2f(x, y);
-	glVertex2f(x+width,y);
-	glVertex2f(x+width, y+height);
-	glVertex2f(x, y+height);
+	glTexCoord2d(0.0,0.0); glVertex2f(x, y);
+	glTexCoord2d(1.0,0.0); glVertex2f(x+width,y);
+	glTexCoord2d(1.0,1.0); glVertex2f(x+width, y+height);
+	glTexCoord2d(0.0,1.0); glVertex2f(x, y+height);
 	glEnd();
 }
 

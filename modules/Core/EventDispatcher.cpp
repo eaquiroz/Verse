@@ -14,7 +14,7 @@ void EventDispatcher::removeEventListener(std::string eventType,Callback *callba
 	//ToDo
 }
 
-void EventDispatcher::dispatchEvent(Events::Event event)
+void EventDispatcher::dispatchEvent(Events::Event *event)
 {
 	EventHandler *eh=EventHandler::Instance();
 	eh->dispatchEvent(event);

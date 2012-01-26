@@ -23,7 +23,7 @@ using std::string;
 class TextField : public Core::DisplayObject {
 	public:
 		TextField(string label, freetype::font_data* f);
-		void draw();
+		void draw(int selection=0);
 		string label;
 	private:
 		freetype::font_data *font;

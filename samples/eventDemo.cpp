@@ -18,26 +18,26 @@ class MyApp: public Core::EventDispatcher{
 		}			
 			
 
-		void onClick(Events::Event e){
+		void onClick(Events::Event *e){
 			cout << "Event fired\n";
-			cout << "Event type: " << e.type << "\n";
+			cout << "Event type: " << e->type << "\n";
 		}
 		
 		void run(){
 			//Create event
 			Events::Event e;
 			e.type="Custom";
-			dispatchEvent(e);
+			dispatchEvent(&e);
 
 			Events::Event e1;
 			e1.type="Custom";
 			e1.target=this;
-			dispatchEvent(e1);			
+			dispatchEvent(&e1);			
 			
 			Events::Event e2;
 			e2.type="Custom";
 			e2.target=new EventDispatcher();
-			dispatchEvent(e2);			
+			dispatchEvent(&e2);			
 			
 		}
 

@@ -11,7 +11,7 @@ class Event : public Core::Object {
 	
  public:
 	Event();
-    Object *target;
+    Core::Object *target;
     std::string type;
 
 };

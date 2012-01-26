@@ -23,7 +23,7 @@ class EventHandler : public Object {
  	static EventHandler* Instance();
     
     std::vector<EventCallback> eventList;
-	void dispatchEvent(Events::Event event);
+	void dispatchEvent(Events::Event *event);
 	void registerEvent(Object *target, std::string eventType, Callback *callback);
  
  protected:

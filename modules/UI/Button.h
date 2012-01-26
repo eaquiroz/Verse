@@ -23,7 +23,7 @@ using std::string;
 class Button : public Core::DisplayObject {
 	public:
 		Button(string label, freetype::font_data* f);
-		void draw();
+		void draw(int selection=0);
 		string label;
 		
 	private:

@@ -13,11 +13,11 @@ Button::Button(string l, freetype::font_data* f )
 	
 }
 
-void Button::draw()
+void Button::draw(int selection)
 {
 	textField->x=x+4;
 	textField->y=y+4;
-	setOrthographicProjection();
+	setOrthographicProjection(selection);
 	
 	glColor4f(red, green, blue, alpha);	
 	Draw2D::RoundedRectangle(x,y,width,height,height/4);

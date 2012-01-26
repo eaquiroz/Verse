@@ -20,15 +20,15 @@ class DisplayObject : public EventDispatcher {
     DisplayObject();
     virtual int hitTestObject();
     virtual int hitTestPoint();
-    virtual void draw();
-    void render();
+    virtual void draw(int selection=0);
+    void render(int selection=0);
     void addChild(DisplayObject *object);
     void removeChild(DisplayObject *object);
-    void setOrthographicProjection();
+    void setOrthographicProjection(int pick);
     void restorePerspectiveProjection();
     void setBackgroundColor(int r, int g, int b);
     void setColor(int r, int g, int b);
- 
+    
  public:
     int visible;
     int x;
@@ -47,9 +47,8 @@ class DisplayObject : public EventDispatcher {
     float fred,fgreen, fblue;
     int alpha;
     int blendMode;
-    
-  private:
-  	std::vector<DisplayObject*> childs;
+    int mouse_x, mouse_y;
+    std::vector<DisplayObject*> childs;
         
 };
 

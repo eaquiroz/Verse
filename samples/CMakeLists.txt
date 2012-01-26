@@ -16,4 +16,4 @@ add_executable (appDemo appDemo.cpp)
 
 # Link the executable to the Hello library. 
 target_link_libraries (eventDemo VerseCore VerseEvents) 
-target_link_libraries (appDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} VerseCore VerseEvents VerseUI VerseDevices) 
+target_link_libraries (appDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} VerseCore VerseEvents VerseUI VerseDevices) 

@@ -19,7 +19,7 @@ class EventDispatcher : public Object {
 
     void removeEventListener(std::string eventType,Callback *callback);
 
-    void dispatchEvent(Events::Event event);
+    void dispatchEvent(Events::Event *event);
 };
 
 } /* End of namespace Core */

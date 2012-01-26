@@ -6,6 +6,7 @@ DisplayObject::DisplayObject()
 {
 	type="DisplayObject";
 	alpha=1;
+        visible=true;
 }
 
 int DisplayObject::hitTestObject()
@@ -18,19 +19,24 @@ int DisplayObject::hitTestPoint()
     return 0;
 }
 
-void DisplayObject::draw()
+void DisplayObject::draw(int selection)
 {
 	
 }
 
-void DisplayObject::render()
+void DisplayObject::render(int selection)
 {
-	draw();
+    if(visible)
+    {
+        if(selection)
+                glLoadName(id);
+	draw(selection);
 	for(int i=0; i<childs.size(); i++)
 	{
 		DisplayObject* child=childs[i];
-		child->render();	
+		child->render(selection);	
 	}
+    }
 }
 
 void DisplayObject::addChild(DisplayObject* object)
@@ -65,8 +71,8 @@ void DisplayObject::setColor(int r, int g, int b)
 }
 
 
-void DisplayObject::setOrthographicProjection() {
-    
+void DisplayObject::setOrthographicProjection(int pick) {
+    /*
     //Get viewport resolution
     GLint viewport[4];
     glGetIntegerv(GL_VIEWPORT, viewport);
@@ -93,6 +99,19 @@ void DisplayObject::setOrthographicProjection() {
 
     // switch back to modelview mode
     glMatrixMode(GL_MODELVIEW);
+    */
+    GLint viewport[4];
+    glGetIntegerv(GL_VIEWPORT, viewport);
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_LIGHTING);
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    if (pick)
+	gluPickMatrix(mouse_x,  viewport[3]-mouse_y, 1.0, 1.0, viewport);
+    glOrtho(0, viewport[2], viewport[3], 0, -5, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 }
 
 void DisplayObject::restorePerspectiveProjection() {

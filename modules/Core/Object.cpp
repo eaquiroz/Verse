@@ -6,7 +6,7 @@ int Object::idCount=0;
 
 Object::Object()
 {
-        id=Object::getId();        
+        id=Object::getId();    
 }
 
 std::string Object::toString()

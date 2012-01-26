@@ -11,15 +11,15 @@ TextField::TextField(string l, freetype::font_data* f )
 	fred=fgreen=fblue=1;
 }
 
-void TextField::draw()
+void TextField::draw(int selection)
 {
 		
-	setOrthographicProjection();
+	setOrthographicProjection(selection);
 	
 	glColor3f(fred, fgreen, fblue);	
 	glRasterPos2f(x, y+font->h);
 	freetype::print(*font, label.c_str() );
-	
+	glColor3f(255,255,255);	
 	restorePerspectiveProjection();
 	
 }

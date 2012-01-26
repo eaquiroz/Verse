@@ -17,6 +17,7 @@ class Object {
     bool enabled;
     std::string type;
     int id;
+    
 private:
     static int idCount;
     static int getId(){Object::idCount++; return Object::idCount;};
