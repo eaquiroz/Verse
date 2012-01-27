@@ -123,4 +123,22 @@ void DisplayObject::restorePerspectiveProjection() {
 	glMatrixMode(GL_MODELVIEW);
 }
 
+DisplayObject* DisplayObject::searchChildId(int idObject)
+{
+	if(id==idObject){
+		return this;
+	}else{
+		for(int i=0; i<childs.size(); i++)
+		{
+			DisplayObject* child=childs[i];
+			DisplayObject* objectSel=child->searchChildId(id);
+			if(objectSel!=NULL)
+				return this;
+		}
+	}
+	return NULL;
+
+	
+}
+
 } /* End of namespace Core */

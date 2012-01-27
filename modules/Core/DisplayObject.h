@@ -28,6 +28,7 @@ class DisplayObject : public EventDispatcher {
     void restorePerspectiveProjection();
     void setBackgroundColor(int r, int g, int b);
     void setColor(int r, int g, int b);
+    DisplayObject* searchChildId(int idObject);
     
  public:
     int visible;
