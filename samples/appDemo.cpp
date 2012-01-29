@@ -133,11 +133,11 @@ class MyApp: public UI::GLBaseApp{
                             image->loadImage(background);
                         
 		}
-		
+                
                 void mouseEvent(int button, int state, int x, int y)
                 {
-                    mouse_x=0;
-                    mouse_y=0;
+                    mouse_x=x;
+                    mouse_y=y;
                     
                     MouseEvent e;
                     

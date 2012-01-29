@@ -23,7 +23,6 @@ GLBaseApp::~GLBaseApp() {
 
 void GLBaseApp::render()
 {
-    //selection();
     //Draw buffer
     DisplayObject::render();
     
@@ -78,7 +77,8 @@ void GLBaseApp::selection(Events::MouseEvent e)
     // if there are hits process them
     if (hits != 0)
     {
-        //std::cout << "there are hits: " << hits << "\n";
+        if(e.type==Events::MouseEvent::MOUSE_UP)
+                std::cout << "there are hits: " << hits << "\n";
         int theid=0;//selectBuf[3];
         //std::cout << theid << ", ";
         for (int loop = 0; loop < hits; loop++)              // Loop Through All The Detected Hits
@@ -90,14 +90,18 @@ void GLBaseApp::selection(Events::MouseEvent e)
             //    depth = buffer[loop*4+1];           // Store How Far Away It Is
             //} 
             theid= selectBuf[loop*4+3];
-            //std::cout << theid << ", ";
+            if(e.type==Events::MouseEvent::MOUSE_UP)
+                std::cout << theid << ", ";
             //Search object with theid
             DisplayObject *objectSel=searchChildId(theid);
             //Create mouseEvent
-            e.target=objectSel;
-            dispatchEvent(&e);
+            if(objectSel!=NULL){
+                e.target=objectSel;
+                dispatchEvent(&e);
+            }
         }
-        //std::cout << "\n";
+        if(e.type==Events::MouseEvent::MOUSE_UP)
+            std::cout << "\n";
 	//dispatchEvent(&e);
     }
     

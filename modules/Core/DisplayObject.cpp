@@ -131,9 +131,9 @@ DisplayObject* DisplayObject::searchChildId(int idObject)
 		for(int i=0; i<childs.size(); i++)
 		{
 			DisplayObject* child=childs[i];
-			DisplayObject* objectSel=child->searchChildId(id);
+			DisplayObject* objectSel=child->searchChildId(idObject);
 			if(objectSel!=NULL)
-				return this;
+				return objectSel;
 		}
 	}
 	return NULL;
