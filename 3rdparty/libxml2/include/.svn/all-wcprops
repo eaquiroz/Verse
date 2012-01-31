@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/include
+END
+wsockcompat.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/include/wsockcompat.h
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/include/Makefile.in
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/include/Makefile.am
+END
+win32config.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/include/win32config.h
+END

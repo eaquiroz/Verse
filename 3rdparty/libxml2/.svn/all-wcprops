@@ -1,0 +1,491 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/!svn/ver/11/Verse/trunk/3rdparty/libxml2
+END
+triodef.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/triodef.h
+END
+testReader.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testReader.c
+END
+testC14N.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testC14N.c
+END
+nanoftp.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/nanoftp.c
+END
+debugXML.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/debugXML.c
+END
+trionan.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/trionan.c
+END
+catalog.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/catalog.c
+END
+testchar.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testchar.c
+END
+trionan.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/trionan.h
+END
+xmlsave.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlsave.c
+END
+HTMLparser.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/HTMLparser.c
+END
+dict.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/dict.c
+END
+hash.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/hash.c
+END
+testXPath.c
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testXPath.c
+END
+xml2Conf.sh.in
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xml2Conf.sh.in
+END
+encoding.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/encoding.c
+END
+error.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/error.c
+END
+xmlmemory.c
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlmemory.c
+END
+threads.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/threads.c
+END
+SAX.c
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/SAX.c
+END
+xmlcatalog.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlcatalog.c
+END
+uri.c
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/uri.c
+END
+tree.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/tree.c
+END
+testURI.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testURI.c
+END
+schematron.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/schematron.c
+END
+xml2-config.1
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xml2-config.1
+END
+xmlschemas.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlschemas.c
+END
+xmlmodule.c
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlmodule.c
+END
+testapi.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testapi.c
+END
+chvalid.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/chvalid.c
+END
+testRelax.c
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testRelax.c
+END
+testAutomata.c
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testAutomata.c
+END
+xmlregexp.c
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlregexp.c
+END
+list.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/list.c
+END
+trio.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/trio.c
+END
+elfgcchack.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/elfgcchack.h
+END
+config.h.in
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/config.h.in
+END
+trio.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/trio.h
+END
+xmlreader.c
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlreader.c
+END
+entities.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/entities.c
+END
+HTMLtree.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/HTMLtree.c
+END
+xmlstring.c
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlstring.c
+END
+xmlschemastypes.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlschemastypes.c
+END
+libxml.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/libxml.h
+END
+parser.c
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/parser.c
+END
+relaxng.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/relaxng.c
+END
+testHTML.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testHTML.c
+END
+legacy.c
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/legacy.c
+END
+triostr.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/triostr.c
+END
+testrecurse.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testrecurse.c
+END
+xpointer.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xpointer.c
+END
+triostr.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/triostr.h
+END
+testThreadsWin32.c
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testThreadsWin32.c
+END
+SAX2.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/SAX2.c
+END
+testSchemas.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testSchemas.c
+END
+testdso.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testdso.c
+END
+testThreads.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testThreads.c
+END
+runxmlconf.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/runxmlconf.c
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/11/Verse/trunk/3rdparty/libxml2/CMakeLists.txt
+END
+valid.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/valid.c
+END
+triop.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/triop.h
+END
+runtest.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/runtest.c
+END
+c14n.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/c14n.c
+END
+xmlunicode.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlunicode.c
+END
+xml2-config.in
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xml2-config.in
+END
+xinclude.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xinclude.c
+END
+parserInternals.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/parserInternals.c
+END
+pattern.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/pattern.c
+END
+runsuite.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/runsuite.c
+END
+testdict.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testdict.c
+END
+globals.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/globals.c
+END
+DOCBparser.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/DOCBparser.c
+END
+xpath.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xpath.c
+END
+xlink.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xlink.c
+END
+testModule.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testModule.c
+END
+xmllint.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmllint.c
+END
+xmlIO.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlIO.c
+END
+testRegexp.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testRegexp.c
+END
+testSAX.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/testSAX.c
+END
+nanohttp.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/nanohttp.c
+END
+xmlwriter.c
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/7/Verse/trunk/3rdparty/libxml2/xmlwriter.c
+END
