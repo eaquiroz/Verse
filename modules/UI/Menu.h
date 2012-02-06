@@ -2,6 +2,10 @@
 #define UI_Menu_h
 
 #include <Core/DisplayObject.h>
+#include <Core/Callback.h>
+#include <Events/Event.h>
+#include <Events/MouseEvent.h>
+
 #include <Utils/XML.h>
 #include <UI/MenuItem.h>
 
@@ -21,15 +25,20 @@ namespace UI {
 using std::string;
 using std::vector;
 
-template <class buttonTye>
 class Menu : public Core::DisplayObject {
 	public:
-		Menu(string xmlfile);
+		Menu(string xmlfile, freetype::font_data* f, freetype::font_data* fbutton);
 		void draw(int selection=0);
-		
+                Core::TCallback<Menu> menuClickCallBack;
+		void onClick(Events::Event *ev);
+                int show;
+                void addMenuSubitem(MenuItem *m);
 	private:
-		vector<MenuItem> items;		
-		XML *xmlData;
+		vector<MenuItem*> items;		
+		Utils::XML *xmlData;
+                TextField *textField;
+                freetype::font_data* font;
+                freetype::font_data* fontButton;
 };
 
 } /* End of namespace UI */

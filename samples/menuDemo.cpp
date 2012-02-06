@@ -45,10 +45,11 @@ class MyApp: public UI::GLBaseApp{
 			
                         //Create fonts to use;
 			font.init("Signika-Regular.ttf", 14);
-			font2.init("Arial.ttf", 11);	
+			font2.init("Signika-Regular.ttf", 18);	
 	
 			//Define our events
 			myCallBack.SetCallback(this, &MyApp::onClick);
+                        
 			//addEventListener(MouseEvent::MOUSE_UP, &myCallBack);
 
                         image=new UI::Image2D();
@@ -73,14 +74,11 @@ class MyApp: public UI::GLBaseApp{
 			addChild(b);
 			
 			
-			menu=new UI::Menu("menu.xml");
-			menu->x=0;
-			menu->y=0;
-			menu->height=platform->resolutionY;
-			menu->width=30;
+			menu=new UI::Menu("menu.xml", &font2, &font);
 			menu->setBackgroundColor(0,0,0);
-			menu->alpha=0;
+			menu->alpha=0.5;
 			addChild(menu);
+                        
                         
 		}			
 		

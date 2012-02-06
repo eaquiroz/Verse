@@ -36,7 +36,7 @@ using namespace std;
 
 XML::XML(string file){
 	//Read file
-	doc = xmlReadFile(file.c_str(), NULL, 0);
+	doc = xmlReadFile(file.c_str(), NULL, XML_PARSE_NOBLANKS);
 
 	if (doc == NULL) {
 		printf("Error: cannot parse the file %s\n", file.c_str());

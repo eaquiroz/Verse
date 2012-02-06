@@ -22,12 +22,12 @@ using std::string;
 
 class Button : public Core::DisplayObject {
 	public:
+                Button();
 		Button(string label, freetype::font_data* f);
 		void draw(int selection=0);
 		string label;
-		
-	private:
-		TextField *textField;
+		freetype::font_data* font;
+                TextField *textField;
 
 
 };

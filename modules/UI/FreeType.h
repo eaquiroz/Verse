@@ -52,6 +52,7 @@ struct char_data {
 	int left;
 	int move_up;
 	unsigned char * data;
+        unsigned char * rotatedData;
 
 	char_data(char ch, FT_Face face) {
 	
@@ -79,10 +80,16 @@ struct char_data {
 
 		
 		data = new unsigned char[2*w*h];
+                rotatedData = new unsigned char[2*w*h];
 		for(int x=0;x<w;x++) for(int y=0;y<h;y++) {
 			const int my=h-1-y;
-			data[2*(x+w*my)]=255;
+                        data[2*(x+w*my)]=255;
 			data[2*(x+w*my)+1]=bitmap.buffer[x+w*y];
+                        
+                        //For rotated
+                        rotatedData[2*(x+w*y)]=255;
+			rotatedData[2*(y + (x)*h)+1]=bitmap.buffer[x+w*y];
+                        
 		}
 	}
 
@@ -107,7 +114,7 @@ struct font_data {
 //The flagship function of the library - this thing will print
 //out text at the current raster position using the font ft_font.
 //The current modelview matrix will also be applied to the text. 
-void print(const font_data &ft_font, const char *fmt, ...) ;
+void print(const font_data &ft_font, int vertical,  const char *fmt, ...) ;
 
 }
 

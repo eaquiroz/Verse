@@ -2,6 +2,8 @@
 #define UI_MenuItem_h
 
 #include <Core/DisplayObject.h>
+#include <UI/Button.h>
+#include <Utils/XML.h>
 
 #ifdef __APPLE__
 #include <OpenGL/gl.h>
@@ -24,15 +26,21 @@ namespace UI {
 using std::string;
 using std::vector;
 
-template <class buttonTye>
-class MenuItem : public Core::DisplayObject {
+struct MenuItemData{
+    string key;
+    string value;
+};
+
+class MenuItem : public Button {
 	public:
-		MenuItem(xmlNode* node);
-		void draw(int selection=0);
-		buttonTye button;
-		
+		MenuItem(xmlNode* node , freetype::font_data* f);
+                void searchChilds(xmlNode* node);
+                void addMenuSubitem(MenuItem *m);
+                void draw(int selection=0);
+                string action;
+                vector<MenuItemData> data;
 	private:
-		vector<MenuItem> items;	
+		vector<MenuItem*> items;	
 
 };
 

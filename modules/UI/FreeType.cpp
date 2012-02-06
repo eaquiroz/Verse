@@ -78,7 +78,7 @@ inline void move_raster_y(int y) {
 ///For this hack, I've taken out the newline processing, though it's easy to
 ///see how you could use the move_raster() functions to put newline processing back
 ///in.
-void print(const font_data &ft_font, const char *fmt, ...)  {
+void print(const font_data &ft_font, int vertical, const char *fmt, ...)  {
 	
 //	float h=ft_font.h/.63f;						//We make the height about 1.5* that of
 
@@ -119,14 +119,23 @@ void print(const font_data &ft_font, const char *fmt, ...)  {
 
 	for(int i=0;text[i];i++) {
 		const char_data &cdata=*ft_font.chars[text[i]];
+                if(vertical){
+                    move_raster_y(cdata.left);
+                    move_raster_x(ft_font.h+-cdata.h-cdata.move_up);
 
-		move_raster_x(cdata.left);
-		move_raster_y(cdata.move_up);
+                    glDrawPixels(cdata.h,cdata.w,GL_LUMINANCE_ALPHA,GL_UNSIGNED_BYTE,cdata.rotatedData);
 
-		glDrawPixels(cdata.w,cdata.h,GL_LUMINANCE_ALPHA,GL_UNSIGNED_BYTE,cdata.data);
+                    move_raster_x(cdata.move_up+cdata.h-ft_font.h);
+                    move_raster_y(cdata.advance- cdata.left);
+                }else{
+                    move_raster_x(cdata.left);
+                    move_raster_y(cdata.move_up);
 
-		move_raster_y(-cdata.move_up);
-		move_raster_x(cdata.advance- cdata.left);
+                    glDrawPixels(cdata.w,cdata.h,GL_LUMINANCE_ALPHA,GL_UNSIGNED_BYTE,cdata.data);
+
+                    move_raster_y(-cdata.move_up);
+                    move_raster_x(cdata.advance- cdata.left);
+                }
 
 	}
 

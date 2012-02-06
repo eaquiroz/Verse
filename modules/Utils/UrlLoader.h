@@ -11,7 +11,7 @@ class UrlLoader : public Core::EventDispatcher {
 
  public:
 
-    virtual int loadString(void  url);
+    //virtual int loadString(void  url);
 
  public:
     int dataFormat;

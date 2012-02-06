@@ -46,7 +46,7 @@ class DisplayObject : public EventDispatcher {
     int rotion;
     float red,green, blue;
     float fred,fgreen, fblue;
-    int alpha;
+    float alpha;
     int blendMode;
     int mouse_x, mouse_y;
     std::vector<DisplayObject*> childs;

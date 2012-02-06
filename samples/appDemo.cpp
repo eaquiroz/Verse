@@ -92,7 +92,7 @@ class MyApp: public UI::GLBaseApp{
 			//Add to scene
 			addChild(b2);
 			
-			text=new UI::TextField("Augmate", &font2);
+			text=new UI::TextField("Augmate", &font2, UI::TextField::HORIZONTAL);
 			text->x=0;
 			text->y=platform->resolutionY-20;
 			//text->setColor(75, 80, 85);

@@ -38,6 +38,9 @@
 
 #include <Core/EventDispatcher.h>
 
+#define CHAR(in) (const char *) (in)
+
+
 namespace Utils {
 
 /**
