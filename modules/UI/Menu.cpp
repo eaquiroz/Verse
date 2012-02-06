@@ -31,7 +31,7 @@ namespace UI {
 	    Utils::XML::searchXmlNode("item", rootElement, &subList);
 
             for (unsigned int i = 0; i < subList.size(); i++) {
-                    MenuItem *subMenuItem = new MenuItem(subList.at(i), fontButton);
+                    MenuItem *subMenuItem = new MenuItem(subList.at(i), fontButton, NULL, this);
                     //subMenuItem->setParent(this);
                     addMenuSubitem(subMenuItem);
             }
@@ -46,7 +46,7 @@ namespace UI {
             m->width=148;
             m->height=24;
             m->setBackgroundColor(0,0,0);
-            m->alpha=.25;
+            m->alpha=0.25;
             m->visible=false;
             addChild(m);
             
@@ -62,10 +62,10 @@ namespace UI {
                 MenuItem *item=items.at(i);
                 item->visible=show;
             }
-            
 
         }
-
+        
+        
 	void Menu::draw(int selection){
                 GLint viewport[4];
                 glGetIntegerv(GL_VIEWPORT, viewport);

@@ -61,7 +61,12 @@ class MyApp: public UI::GLBaseApp{
                         addChild(image);
                         
                         
-			//Init Button
+			menu=new UI::Menu("menu.xml", &font2, &font);
+			menu->setBackgroundColor(0,0,0);
+			menu->alpha=0.5;
+			addChild(menu);
+                        
+                        //Init Button
 			b=new UI::Button("Button 1",&font);
 			b->x=-200;
 			b->y=0;
@@ -74,11 +79,6 @@ class MyApp: public UI::GLBaseApp{
 			addChild(b);
 			
 			
-			menu=new UI::Menu("menu.xml", &font2, &font);
-			menu->setBackgroundColor(0,0,0);
-			menu->alpha=0.5;
-			addChild(menu);
-                        
                         
 		}			
 		
@@ -109,40 +109,6 @@ class MyApp: public UI::GLBaseApp{
                             image->loadImage(background);
                         
 		}
-                
-                void mouseEvent(int button, int state, int x, int y)
-                {
-                    mouse_x=x;
-                    mouse_y=y;
-                    
-                    MouseEvent e;
-                    
-                    e.x=x;
-                    e.y=y;
-                    e.state=state;
-                    e.button=button;
-                    
-                    if(button==0){
-                        if(state)
-                            e.type=MouseEvent::MOUSE_UP;
-                        else
-                            e.type=MouseEvent::MOUSE_DOWN;
-                    }else if(button==1){
-                        if(state)
-                            e.type=MouseEvent::MIDDLE_MOUSE_UP;
-                        else
-                            e.type=MouseEvent::MIDDLE_MOUSE_DOWN;
-                    }else if(button==2){
-                        if(state)
-                            e.type=MouseEvent::RIGHT_MOUSE_UP;
-                        else
-                            e.type=MouseEvent::RIGHT_MOUSE_DOWN;
-                    }
-                    
-                    //dispatchEvent(&e);
-                    selection(e);
-                    
-                }
                 
 		void run()
 		{

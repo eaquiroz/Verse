@@ -28,6 +28,7 @@ public:
     GLBaseApp(const GLBaseApp& orig);
     virtual ~GLBaseApp();
     void render();
+    void mouseEvent(int button, int state, int x, int y);
     void selection(Events::MouseEvent e);
 
 private:

@@ -25,14 +25,18 @@ namespace UI {
 using std::string;
 using std::vector;
 
+class MenuItem;
 class Menu : public Core::DisplayObject {
 	public:
 		Menu(string xmlfile, freetype::font_data* f, freetype::font_data* fbutton);
 		void draw(int selection=0);
+                
                 Core::TCallback<Menu> menuClickCallBack;
-		void onClick(Events::Event *ev);
+		
+                void onClick(Events::Event *ev);
                 int show;
                 void addMenuSubitem(MenuItem *m);
+                
 	private:
 		vector<MenuItem*> items;		
 		Utils::XML *xmlData;

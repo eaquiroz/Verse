@@ -1,9 +1,11 @@
 #include "MenuItem.h"
 
 namespace UI {
-	MenuItem::MenuItem(xmlNode* node, freetype::font_data* f)
+	MenuItem::MenuItem(xmlNode* node, freetype::font_data* f, MenuItem* p, Menu* m)
 	{
             font=f;
+            parent=p;
+            menu=m;
             
             //Get label option
             vector<xmlNode *> *labelNode = new vector<xmlNode *> ();
@@ -24,7 +26,7 @@ namespace UI {
                     xmlNode* dataNodes=dataNode->at(0);
                     
                     xmlNode* trav = dataNodes->xmlChildrenNode;
-                    std::cout << "label: "<< label << "\n";
+                    std::cout << "[" << id << "]"<<"label: "<< label << "\n";
                     /* Traverse the list of objets at this level */
                     while (trav != NULL) {
                             /* Check the name of this node, if it matches with search_string, add to the vector */
@@ -52,7 +54,25 @@ namespace UI {
                 searchChilds(subNode->at(0));
             }
             
+            
+            //Define our events
+            menuItemClickCallBack.SetCallback(this, &MenuItem::onClickItem);
+            addEventListener(Events::MouseEvent::MOUSE_UP, &menuItemClickCallBack);
+            
 	}
+        
+        void MenuItem::onClickItem(Events::Event *ev)
+        {
+            
+            MenuItem* item=(MenuItem*)ev->target;
+            std::cout << "Submenu clicked\n" ;
+            for(int i=0; i<item->data.size(); i++){
+                MenuItemData dat=item->data.at(i);
+                std::cout << "[" << dat.key << "]=" << dat.value << "\n";
+            }
+            
+
+        }
         
         void MenuItem::searchChilds(xmlNode* node)
         {
@@ -61,7 +81,7 @@ namespace UI {
             Utils::XML::searchXmlNode("item", node, &subList);
 
             for (unsigned int i = 0; i < subList.size(); i++) {
-                    MenuItem *subMenuItem = new MenuItem(subList.at(i), font);
+                    MenuItem *subMenuItem = new MenuItem(subList.at(i), font, this, menu);
                     //subMenuItem->setParent(this);
                     addMenuSubitem(subMenuItem);
             }
@@ -70,9 +90,9 @@ namespace UI {
         {
             items.push_back(m);
             m->x=0;
-            m->y=items.size()*25;
-            m->width=150;
-            m->height=25;
+            m->y=(items.size()-1)*25;
+            m->width=148;
+            m->height=24;
             m->setBackgroundColor(0,0,0);
             m->visible=false;
             addChild(m);

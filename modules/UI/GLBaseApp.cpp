@@ -28,6 +28,41 @@ void GLBaseApp::render()
     
 }
 
+void GLBaseApp::mouseEvent(int button, int state, int x, int y)
+{
+    mouse_x=x;
+    mouse_y=y;
+
+    Events::MouseEvent e;
+
+    e.x=x;
+    e.y=y;
+    e.state=state;
+    e.button=button;
+
+    if(button==0){
+        if(state)
+            e.type=Events::MouseEvent::MOUSE_UP;
+        else
+            e.type=Events::MouseEvent::MOUSE_DOWN;
+    }else if(button==1){
+        if(state)
+            e.type=Events::MouseEvent::MIDDLE_MOUSE_UP;
+        else
+            e.type=Events::MouseEvent::MIDDLE_MOUSE_DOWN;
+    }else if(button==2){
+        if(state)
+            e.type=Events::MouseEvent::RIGHT_MOUSE_UP;
+        else
+            e.type=Events::MouseEvent::RIGHT_MOUSE_DOWN;
+    }else if(button==-1){
+        e.type=Events::MouseEvent::MOUSE_OVER;
+    }
+
+    selection(e);
+
+}
+
 void GLBaseApp::selection(Events::MouseEvent e)
 {
      //Chec for selection
@@ -98,6 +133,7 @@ void GLBaseApp::selection(Events::MouseEvent e)
             if(objectSel!=NULL){
                 e.target=objectSel;
                 dispatchEvent(&e);
+                
             }
         }
         if(e.type==Events::MouseEvent::MOUSE_UP)

@@ -2,6 +2,8 @@
 #define UI_Button_h
 
 #include <Core/DisplayObject.h>
+#include <Events/Event.h>
+#include <Events/MouseEvent.h>
 #include "Draw2D.h"
 #include "FreeType.h"
 #include "TextField.h"
@@ -28,8 +30,11 @@ class Button : public Core::DisplayObject {
 		string label;
 		freetype::font_data* font;
                 TextField *textField;
+                float overRed, overBlue, overGreen;
+                int isOver;
 
-
+                Core::TCallback<Button> overCallBack;
+                void onOver(Events::Event *ev);
 };
 
 } /* End of namespace UI */

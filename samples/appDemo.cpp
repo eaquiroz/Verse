@@ -134,39 +134,6 @@ class MyApp: public UI::GLBaseApp{
                         
 		}
                 
-                void mouseEvent(int button, int state, int x, int y)
-                {
-                    mouse_x=x;
-                    mouse_y=y;
-                    
-                    MouseEvent e;
-                    
-                    e.x=x;
-                    e.y=y;
-                    e.state=state;
-                    e.button=button;
-                    
-                    if(button==0){
-                        if(state)
-                            e.type=MouseEvent::MOUSE_UP;
-                        else
-                            e.type=MouseEvent::MOUSE_DOWN;
-                    }else if(button==1){
-                        if(state)
-                            e.type=MouseEvent::MIDDLE_MOUSE_UP;
-                        else
-                            e.type=MouseEvent::MIDDLE_MOUSE_DOWN;
-                    }else if(button==2){
-                        if(state)
-                            e.type=MouseEvent::RIGHT_MOUSE_UP;
-                        else
-                            e.type=MouseEvent::RIGHT_MOUSE_DOWN;
-                    }
-                    
-                    //dispatchEvent(&e);
-                    selection(e);
-                    
-                }
                 
 		void run()
 		{

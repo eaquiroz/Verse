@@ -5,6 +5,12 @@ namespace UI {
     Button::Button()
     {
         textField=NULL;
+        
+        overRed=overGreen=overBlue=0;
+        //Define our events
+        overCallBack.SetCallback(this, &Button::onOver);
+        addEventListener(Events::MouseEvent::MOUSE_OVER, &overCallBack);
+        isOver=false;
     }
     
 Button::Button(string l, freetype::font_data* f )
@@ -18,6 +24,16 @@ Button::Button(string l, freetype::font_data* f )
 	
 	addChild(textField);
 	
+        overRed=overGreen=overBlue=0;
+       //Define our events
+        overCallBack.SetCallback(this, &Button::onOver);
+        addEventListener(Events::MouseEvent::MOUSE_OVER, &overCallBack);
+        isOver=false;
+        
+}
+
+void Button::onOver(Events::Event *ev){
+    isOver=true;
 }
 
 void Button::draw(int selection)
@@ -27,8 +43,10 @@ void Button::draw(int selection)
 	textField->y=y+4;
     }
 	setOrthographicProjection(selection);
-	
-	glColor4f(red, green, blue, alpha);	
+        if(isOver)
+            glColor4f(overRed, overGreen, overBlue, alpha);	
+        else
+            glColor4f(red, green, blue, alpha);	
 	Draw2D::RoundedRectangle(x,y,width,height,height/4);
 	glColor3f(255,255,255);
 	restorePerspectiveProjection();
