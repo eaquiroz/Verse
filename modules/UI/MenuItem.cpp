@@ -56,23 +56,10 @@ namespace UI {
             
             
             //Define our events
-            menuItemClickCallBack.SetCallback(this, &MenuItem::onClickItem);
+            menuItemClickCallBack.SetCallback(menu, &Menu::onClickItem);
             addEventListener(Events::MouseEvent::MOUSE_UP, &menuItemClickCallBack);
             
 	}
-        
-        void MenuItem::onClickItem(Events::Event *ev)
-        {
-            
-            MenuItem* item=(MenuItem*)ev->target;
-            std::cout << "Submenu clicked\n" ;
-            for(int i=0; i<item->data.size(); i++){
-                MenuItemData dat=item->data.at(i);
-                std::cout << "[" << dat.key << "]=" << dat.value << "\n";
-            }
-            
-
-        }
         
         void MenuItem::searchChilds(xmlNode* node)
         {

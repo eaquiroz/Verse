@@ -1,6 +1,7 @@
 #include "MouseEvent.h"
 
 namespace Events {
+	MouseEvent::MouseEvent(){}
 	const std::string MouseEvent::MOUSE_DOWN="mouseDown";
     const std::string MouseEvent::MOUSE_UP="mouseUp";
     

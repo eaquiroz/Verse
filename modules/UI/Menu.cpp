@@ -51,7 +51,18 @@ namespace UI {
             addChild(m);
             
         }
-        
+         void Menu::onClickItem(Events::Event *ev)
+        {
+            
+            MenuItem* item=(MenuItem*)ev->target;
+            std::cout << "Submenu clicked\n" ;
+            for(int i=0; i<item->data.size(); i++){
+                MenuItemData dat=item->data.at(i);
+                std::cout << "[" << dat.key << "]=" << dat.value << "\n";
+            }
+            
+
+        }
         void Menu::onClick(Events::Event *ev)
         {
             

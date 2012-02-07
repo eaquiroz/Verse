@@ -24,4 +24,4 @@ add_executable (menuDemo menuDemo.cpp)
 # Link the executable to the Hello library. 
 target_link_libraries (eventDemo VerseCore VerseEvents) 
 target_link_libraries (appDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} VerseCore VerseEvents VerseUI VerseDevices) 
-target_link_libraries (menuDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} ${LIBXML2_LIBRARIES} VerseCore VerseEvents VerseUI VerseDevices VerseUtils) 
+target_link_libraries (menuDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} VerseCore VerseEvents VerseUI VerseDevices VerseUtils ${LIBXML2_LIBRARIES}) 

@@ -34,6 +34,8 @@ void DisplayObject::render(int selection)
 	for(int i=0; i<childs.size(); i++)
 	{
 		DisplayObject* child=childs[i];
+		child->mouse_x=mouse_x;
+                child->mouse_y=mouse_y;
 		child->render(selection);	
 	}
     }

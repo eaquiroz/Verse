@@ -45,7 +45,7 @@ class MenuItem : public Button {
                 MenuItem* parent;
                 Menu* menu;
                 
-                Core::TCallback<MenuItem> menuItemClickCallBack;
+                Core::TCallback<Menu> menuItemClickCallBack;
                 void onClickItem(Events::Event *ev);
                 
 	private:

@@ -23,6 +23,6 @@ include_directories(
 )
 
 #Process folders
+add_subdirectory(3rdparty)
 add_subdirectory(modules)
-
 add_subdirectory(samples)

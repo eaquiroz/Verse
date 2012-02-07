@@ -34,6 +34,7 @@ class Menu : public Core::DisplayObject {
                 Core::TCallback<Menu> menuClickCallBack;
 		
                 void onClick(Events::Event *ev);
+		void onClickItem(Events::Event *ev);
                 int show;
                 void addMenuSubitem(MenuItem *m);
                 

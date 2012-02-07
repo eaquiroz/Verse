@@ -15,7 +15,7 @@ class MouseEvent : public Event {
     bool altKey;
     int button;
     int state;
-    
+    MouseEvent();
     
 public:
     static const std::string MOUSE_DOWN;
