@@ -1,8 +1,9 @@
 #include "MenuItem.h"
 
 namespace UI {
-	MenuItem::MenuItem(xmlNode* node, freetype::font_data* f, MenuItem* p, Menu* m)
+	MenuItem::MenuItem(xmlNode* node, freetype::font_data* f, MenuItem* p, Menu* m, int l)
 	{
+            level=l;
             font=f;
             parent=p;
             menu=m;
@@ -11,7 +12,7 @@ namespace UI {
             vector<xmlNode *> *labelNode = new vector<xmlNode *> ();
             Utils::XML::searchXmlNode("label", node, labelNode);
 
-            string label="";
+            label="";
             if (labelNode->size() > 0) {
                     label = string(CHAR (xmlNodeGetContent (labelNode->at(0))));
             }
@@ -68,15 +69,15 @@ namespace UI {
             Utils::XML::searchXmlNode("item", node, &subList);
 
             for (unsigned int i = 0; i < subList.size(); i++) {
-                    MenuItem *subMenuItem = new MenuItem(subList.at(i), font, this, menu);
+                    MenuItem *subMenuItem = new MenuItem(subList.at(i), font, this, menu, level+1);
                     //subMenuItem->setParent(this);
                     addMenuSubitem(subMenuItem);
             }
         }
         void MenuItem::addMenuSubitem(MenuItem *m)
         {
-            items.push_back(m);
-            m->x=0;
+            items.push_back(m);            
+            m->x=148*m->level;
             m->y=(items.size()-1)*25;
             m->width=148;
             m->height=24;
@@ -85,7 +86,23 @@ namespace UI {
             addChild(m);
             
         }
-        
+        void MenuItem::showSubmenu()
+        {
+            for(int i=0; i< items.size(); i++)
+            {
+                MenuItem *m=items.at(i);
+                m->visible=true;
+            }
+        }
+        void MenuItem::hideSubmenu()
+        {
+            for(int i=0; i< items.size(); i++)
+            {
+                MenuItem *m=items.at(i);
+                m->visible=false;
+                m->hideSubmenu();
+            }
+        }
         void MenuItem::draw(int selection)
         {
             if(textField){

@@ -5,6 +5,7 @@
 #include <Core/Callback.h>
 #include <UI/Button.h>
 #include <UI/Menu.h>
+#include <UI/MenuItemData.h>
 #include <Utils/XML.h>
 
 #ifdef __APPLE__
@@ -28,19 +29,18 @@ namespace UI {
 using std::string;
 using std::vector;
 
-struct MenuItemData{
-    string key;
-    string value;
-};
-
 class Menu;
 class MenuItem : public Button {
 	public:
-		MenuItem(xmlNode* node , freetype::font_data* f, MenuItem* p, Menu* m );
+		MenuItem(xmlNode* node , freetype::font_data* f, MenuItem* p, Menu* m, int l );
                 void searchChilds(xmlNode* node);
                 void addMenuSubitem(MenuItem *m);
                 void draw(int selection=0);
+                void showSubmenu();
+                void hideSubmenu();
                 string action;
+                string label;
+                int level;
                 vector<MenuItemData> data;
                 MenuItem* parent;
                 Menu* menu;
@@ -48,7 +48,6 @@ class MenuItem : public Button {
                 Core::TCallback<Menu> menuItemClickCallBack;
                 void onClickItem(Events::Event *ev);
                 
-	private:
 		vector<MenuItem*> items;	
 
 };

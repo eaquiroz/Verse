@@ -14,12 +14,16 @@ FIND_PACKAGE( OpenGL REQUIRED )
 # FreeType Package
 FIND_PACKAGE( Freetype REQUIRED )
 
+# LibXML Package
+FIND_PACKAGE( LIBXML2 )
+
 
 include_directories( 
 	${OpenGL_INCLUDE_DIR}
 	${OpenCV_INCLUDE_DIR}
 	${FREETYPE_INCLUDE_DIR_freetype2}
 	${FREETYPE_INCLUDE_DIR_ft2build}
+        ${LIBXML2_INCLUDE_DIR}
 )
 
 #Process folders

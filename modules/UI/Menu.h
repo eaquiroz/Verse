@@ -5,6 +5,7 @@
 #include <Core/Callback.h>
 #include <Events/Event.h>
 #include <Events/MouseEvent.h>
+#include <Events/MenuEvent.h>
 
 #include <Utils/XML.h>
 #include <UI/MenuItem.h>
@@ -37,6 +38,8 @@ class Menu : public Core::DisplayObject {
 		void onClickItem(Events::Event *ev);
                 int show;
                 void addMenuSubitem(MenuItem *m);
+                vector<string> path;
+                string name;
                 
 	private:
 		vector<MenuItem*> items;		
@@ -44,6 +47,7 @@ class Menu : public Core::DisplayObject {
                 TextField *textField;
                 freetype::font_data* font;
                 freetype::font_data* fontButton;
+                int inLevel;
 };
 
 } /* End of namespace UI */

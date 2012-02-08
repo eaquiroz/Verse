@@ -3,11 +3,16 @@ find_package(GLUT)
 
 # Make sure the compiler can find include files from our Hello library. 
 include_directories (${VERSE_CORE_SOURCE_DIR}/modules)
-IF (NOT LIBXML2_FOUND)
+
+IF (NOT LIBXML2_FOUND AND NOT APPLE)
 	include_directories (${VERSE_CORE_SOURCE_DIR}/3rdparty/libxml2/include)
 	link_directories (${VERSE_CORE_SOURCE_DIR}/3rdparty/libxml2)
         set (LIBXML2_LIBRARIES xml2)
-ENDIF (NOT LIBXML2_FOUND)
+ENDIF (NOT LIBXML2_FOUND AND NOT APPLE)
+
+IF (APPLE)
+    set (LIBXML2_LIBRARIES xml2)
+ENDIF (APPLE)
 
 # Make sure the linker can find the Hello library once it is built. 
 link_directories (${VERSE_CORE_BINARY_DIR}/modules/Core) 
@@ -24,4 +29,4 @@ add_executable (menuDemo menuDemo.cpp)
 # Link the executable to the Hello library. 
 target_link_libraries (eventDemo VerseCore VerseEvents) 
 target_link_libraries (appDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} VerseCore VerseEvents VerseUI VerseDevices) 
-target_link_libraries (menuDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} VerseCore VerseEvents VerseUI VerseDevices VerseUtils ${LIBXML2_LIBRARIES}) 
+target_link_libraries (menuDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} VerseCore VerseUI VerseDevices VerseUtils  VerseEvents ${LIBXML2_LIBRARIES}) 

@@ -6,8 +6,10 @@
 
 #include <Events/Event.h>
 #include <Events/MouseEvent.h>
+#include <Events/MenuEvent.h>
 
 #include <UI/Menu.h>
+#include <UI/MenuItemData.h>
 #include <UI/GLBaseApp.h>
 #include <UI/Button.h>
 #include <UI/Image2D.h>
@@ -39,7 +41,6 @@ class MyApp: public UI::GLBaseApp{
 		void init()
 		{
                         showCamera=0;
-			framenum=0;
 			
                         background=cv::imread("osx-back.png");
 			
@@ -64,21 +65,9 @@ class MyApp: public UI::GLBaseApp{
 			menu=new UI::Menu("menu.xml", &font2, &font);
 			menu->setBackgroundColor(0,0,0);
 			menu->alpha=0.5;
+                        menu->addEventListener(MenuEvent::MENU_ITEM_ACTION, &myCallBack);
 			addChild(menu);
                         
-                        //Init Button
-			b=new UI::Button("Button 1",&font);
-			b->x=-200;
-			b->y=0;
-			b->width=200;
-			b->height=24;
-			b->setBackgroundColor(75,185, 225);
-			b->addEventListener(MouseEvent::MOUSE_UP, &myCallBack);
-                        b->addEventListener(MouseEvent::MOUSE_DOWN, &myCallBack);
-			//Add to scene
-			addChild(b);
-			
-			
                         
 		}			
 		
@@ -88,25 +77,24 @@ class MyApp: public UI::GLBaseApp{
                         cv::Mat img=platform->getFrame();
                         image->loadImage(img);
                     }
-			framenum++;
-			if(framenum>10)
-				b->x=b->x + ((platform->resolutionX-b->x-100)/10);
 			
 		}
 
 		void onClick(Event *ev)
 		{
-                    MouseEvent *e=(MouseEvent*) ev;
-			
-			cout << "Event fired\n";
-			cout << "Event type: " << e->type << "\n";
-                        
-                        stringstream mouseInfo;
-                        mouseInfo << "Position: " << e->x << "," << e->y << " | State: " << e->state << " | Button: "<< e->button;
-                         
+                    MenuEvent *e=(MenuEvent*) ev;
+                    
+                    std::cout << "Submenu clicked with action "<< e->action << " \n" ;
+                    for(int i=0; i<e->data.size(); i++){
+                        UI::MenuItemData dat=e->data.at(i);
+                        std::cout << "[" << dat.key << "]=" << dat.value << "\n";
+                    }
+                    
+                    if(e->action.compare("cam")==0){
                         showCamera=!showCamera;
-                        if(!showCamera)
-                            image->loadImage(background);
+                    }
+                    if(!showCamera)
+                        image->loadImage(background);
                         
 		}
                 
@@ -121,8 +109,6 @@ class MyApp: public UI::GLBaseApp{
 
 	private:
 		Core::TCallback<MyApp> myCallBack;
-		UI::Button *b;
-		int framenum;
 		freetype::font_data font;
 		freetype::font_data font2;
                 Devices::Platform *platform;

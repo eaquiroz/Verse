@@ -1,3 +1,3 @@
-IF (NOT LIBXML2_FOUND)
-	add_subdirectory(libxml2)
-ENDIF (NOT LIBXML2_FOUND)
+IF (NOT LIBXML2_FOUND AND NOT APPLE)
+    add_subdirectory(libxml2)
+ENDIF (NOT LIBXML2_FOUND AND NOT APPLE)
