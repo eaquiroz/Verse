@@ -15,6 +15,8 @@
 #include <UI/Image2D.h>
 #include <UI/TextField.h>
 #include <UI/FreeType.h>
+#include <UI/DialogBalloon.h>
+#include <UI/Dialog.h>
 
 #include <Devices/Platform.h>
 
@@ -45,6 +47,7 @@ class MyApp: public UI::GLBaseApp{
                         background=cv::imread("osx-back.png");
 			
                         //Create fonts to use;
+			font11.init("Signika-Regular.ttf", 11);			
 			font.init("Signika-Regular.ttf", 14);
 			font2.init("Signika-Regular.ttf", 18);	
 	
@@ -68,7 +71,23 @@ class MyApp: public UI::GLBaseApp{
                         menu->addEventListener(MenuEvent::MENU_ITEM_ACTION, &myCallBack);
 			addChild(menu);
                         
+			db=new UI::DialogBalloon(&font, &font11);
+			db->height=200;
+			db->width=300;
+			db->x=400;
+			db->y=300;
+			db->setTitle("Augmate");
+			db->setText("A next generation internet software \ncompany, Augmate provides visual\nefficiency tools for businesses\nand consumers by merging the digital\nand physical worlds using\neye-wear and mobile devices.");
+			addChild(db);
                         
+			dialog=new UI::Dialog(&font, &font11);
+			dialog->height=150;
+			dialog->width=300;
+			dialog->x=100;
+			dialog->y=100;
+			//dialog->visible=false;
+			addChild(dialog);
+
 		}			
 		
 		void animate(){
@@ -110,9 +129,12 @@ class MyApp: public UI::GLBaseApp{
 	private:
 		Core::TCallback<MyApp> myCallBack;
 		freetype::font_data font;
+		freetype::font_data font11;
 		freetype::font_data font2;
                 Devices::Platform *platform;
                 UI::Image2D *image;
+		UI::DialogBalloon *db;
+		UI::Dialog *dialog;
                 cv::Mat background;
                 int showCamera;
 
