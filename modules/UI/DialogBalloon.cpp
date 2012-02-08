@@ -34,6 +34,15 @@ void DialogBalloon::setText(string t)
 	textField->label=text;
 }
 
+void DialogBalloon::show(string t, string txt)
+{
+	setTitle(t);
+	setText(txt);
+	visible=true;
+}
+void DialogBalloon::hide(){
+	visible=false;
+}
 
 void DialogBalloon::draw(int selection)
 {

@@ -27,6 +27,8 @@
  */
 
 
+#include <opencv2/core/types_c.h>
+
 #include "QR.h"
 
 namespace AR {
@@ -78,6 +80,9 @@ void QR::process(IplImage* img) {
 		    // on suceed decoding, print decoded text.
 		    //
 		    QrCodeHeader header;
+                    Events::QREvent e;
+                    e.target=this;
+                        
 		    if(qr_decoder_get_header(decoder,&header)){
 		        if(text_size<header.byte_size+1){
 		            if(text)
@@ -87,7 +92,28 @@ void QR::process(IplImage* img) {
 		            text=new unsigned char[text_size];
 		        }
 		        qr_decoder_get_body(decoder,text,text_size);
-		    }
+                        
+                        CvPoint *vertexes=qr_decoder_get_coderegion_vertexes(decoder);
+                        
+                        int i;
+                        float meanX=0;
+                        float meanY=0;
+                        for(i=0;i<4;i++){
+                            meanX+=vertexes[i].x;
+                            meanY+=vertexes[i].y;
+                        }
+                        meanX=meanX/4.0f;
+                        meanY=meanY/4.0f;
+                        
+                        e.type=Events::QREvent::QR_DETECTED;
+                        e.data=std::string((char*)text);
+                        e.x=meanX/(float)img->width;
+                        e.y=meanY/(float)img->height;
+		    }else{
+                        e.type=Events::QREvent::QR_NO_DETECTED;
+                    }
+                    //Dispatch Event
+                    dispatchEvent(&e);
 		}
 	}
 

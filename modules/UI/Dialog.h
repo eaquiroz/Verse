@@ -37,6 +37,14 @@ class Dialog : public Core::DisplayObject {
 		TextField *textField;
 		Button *okButton;
 		Button *cancelButton;
+                
+                Core::TCallback<Dialog> cancelClickCallBack;
+                void onClickCancel(Events::Event *ev);
+                
+                Core::TCallback<Dialog> okClickCallBack;
+                void onClickOk(Events::Event *ev);
+                
+                
 	private:
 		int headerHeight, footerHeight ;
 		string title;

@@ -33,6 +33,26 @@ Dialog::Dialog(freetype::font_data* f, freetype::font_data* ftext )
 	cancelButton->setBackgroundColor(0,0,0);
 	addChild(cancelButton);
 
+        //Define our events
+        okClickCallBack.SetCallback(this, &Dialog::onClickOk);
+        okButton->addEventListener(Events::MouseEvent::MOUSE_UP, &okClickCallBack);
+        
+        cancelClickCallBack.SetCallback(this, &Dialog::onClickCancel);
+        cancelButton->addEventListener(Events::MouseEvent::MOUSE_UP, &cancelClickCallBack);
+            
+
+}
+
+void Dialog::onClickCancel(Events::Event *ev)
+{
+    this->visible=false;
+    //ToDo dispatch event cancel dialog button
+}
+
+void Dialog::onClickOk(Events::Event *ev)
+{
+    this->visible=false;
+    //ToDo dispatch event ok dialog button
 }
 
 void Dialog::setTitle(string t)

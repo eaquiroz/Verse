@@ -29,6 +29,7 @@
 #define AR_QR_h
 
 #include <Core/EventDispatcher.h>
+#include <Events/QREvent.h>
 
 #include <cv.h>
 #include <highgui.h>

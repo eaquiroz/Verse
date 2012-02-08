@@ -24,7 +24,7 @@ void TextField::draw(int selection)
 	glRasterPos2f(x, y+font->h);
 	size_t found, lastFound;
 	lastFound=0;
-	found=label.find('\n');
+	found=label.find("\\n");
 	int line=0;
 
 	if(found==string::npos)
@@ -35,8 +35,8 @@ void TextField::draw(int selection)
 			glRasterPos2f(x, y+font->h+(line*(font->h+5)));
 			string str=label.substr(lastFound, found-lastFound);
 			freetype::print(*font, vertical,str.c_str() );		
-			lastFound=found;
-			found=label.find('\n', lastFound+1);
+			lastFound=found+2;
+			found=label.find("\\n", lastFound+1);
 			line++;
 		}
 	}

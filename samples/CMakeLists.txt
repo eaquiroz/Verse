@@ -20,6 +20,7 @@ link_directories (${VERSE_CORE_BINARY_DIR}/modules/Events)
 link_directories (${VERSE_CORE_BINARY_DIR}/modules/UI) 
 link_directories (${VERSE_CORE_BINARY_DIR}/modules/Devices) 
 link_directories (${VERSE_CORE_BINARY_DIR}/modules/Utils) 
+link_directories (${VERSE_CORE_BINARY_DIR}/modules/AR) 
 
 # Add executable called "xxxDemo" that is built from the source files 
 add_executable (eventDemo eventDemo.cpp) 
@@ -29,4 +30,4 @@ add_executable (menuDemo menuDemo.cpp)
 # Link the executable to the Hello library. 
 target_link_libraries (eventDemo VerseCore VerseEvents) 
 target_link_libraries (appDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} VerseCore VerseEvents VerseUI VerseDevices) 
-target_link_libraries (menuDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} VerseCore VerseUI VerseDevices VerseUtils  VerseEvents ${LIBXML2_LIBRARIES}) 
+target_link_libraries (menuDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} ${QR_LIBRARY} VerseCore VerseUI VerseDevices VerseUtils  VerseAR  VerseEvents ${LIBXML2_LIBRARIES}) 

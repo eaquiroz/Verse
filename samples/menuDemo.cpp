@@ -7,6 +7,9 @@
 #include <Events/Event.h>
 #include <Events/MouseEvent.h>
 #include <Events/MenuEvent.h>
+#include <Events/QREvent.h>
+
+#include <AR/QR.h>
 
 #include <UI/Menu.h>
 #include <UI/MenuItemData.h>
@@ -51,11 +54,15 @@ class MyApp: public UI::GLBaseApp{
 			font.init("Signika-Regular.ttf", 14);
 			font2.init("Signika-Regular.ttf", 18);	
 	
-			//Define our events
-			myCallBack.SetCallback(this, &MyApp::onClick);
+			//Define our callback events
+			menuCallBack.SetCallback(this, &MyApp::onClick);
+                        qrCallBack.SetCallback(this, &MyApp::qrDetected);
                         
-			//addEventListener(MouseEvent::MOUSE_UP, &myCallBack);
-
+                        //Init qr;
+                        qr= new AR::QR();
+                        qr->addEventListener(Events::QREvent::QR_DETECTED, &qrCallBack);
+                        qr->addEventListener(Events::QREvent::QR_NO_DETECTED, &qrCallBack);
+                        
                         image=new UI::Image2D();
                         image->loadImage(background);
                         image->x=0;
@@ -68,16 +75,17 @@ class MyApp: public UI::GLBaseApp{
 			menu=new UI::Menu("menu.xml", &font2, &font);
 			menu->setBackgroundColor(0,0,0);
 			menu->alpha=0.5;
-                        menu->addEventListener(MenuEvent::MENU_ITEM_ACTION, &myCallBack);
+                        menu->addEventListener(MenuEvent::MENU_ITEM_ACTION, &menuCallBack);
 			addChild(menu);
                         
 			db=new UI::DialogBalloon(&font, &font11);
-			db->height=200;
-			db->width=300;
+			db->height=120;
+			db->width=250;
 			db->x=400;
 			db->y=300;
 			db->setTitle("Augmate");
-			db->setText("A next generation internet software \ncompany, Augmate provides visual\nefficiency tools for businesses\nand consumers by merging the digital\nand physical worlds using\neye-wear and mobile devices.");
+			db->setText("");
+                        db->hide();
 			addChild(db);
                         
 			dialog=new UI::Dialog(&font, &font11);
@@ -85,7 +93,7 @@ class MyApp: public UI::GLBaseApp{
 			dialog->width=300;
 			dialog->x=100;
 			dialog->y=100;
-			//dialog->visible=false;
+			dialog->hide();
 			addChild(dialog);
 
 		}			
@@ -95,22 +103,45 @@ class MyApp: public UI::GLBaseApp{
                     {
                         cv::Mat img=platform->getFrame();
                         image->loadImage(img);
+                        IplImage imgIpl=img;
+                        qr->process(&imgIpl);
                     }
 			
 		}
 
+                void qrDetected(Event *ev)
+                {
+                    QREvent *e=(QREvent*)ev;
+                    if(ev->type.compare(QREvent::QR_DETECTED)==0){
+                        db->x=e->x*platform->resolutionX;
+                        db->y=e->y*platform->resolutionY;
+                        db->show("QR",e->data);
+                    }else{
+                        db->hide();
+                    }
+                }
+                
+                
 		void onClick(Event *ev)
 		{
                     MenuEvent *e=(MenuEvent*) ev;
                     
-                    std::cout << "Submenu clicked with action "<< e->action << " \n" ;
-                    for(int i=0; i<e->data.size(); i++){
-                        UI::MenuItemData dat=e->data.at(i);
-                        std::cout << "[" << dat.key << "]=" << dat.value << "\n";
-                    }
-                    
                     if(e->action.compare("cam")==0){
                         showCamera=!showCamera;
+                    }else if(e->action.compare("about")==0){
+                        string tit="";
+                        string text="";
+                        for(int i=0; i<e->data.size(); i++){
+                            UI::MenuItemData dat=e->data.at(i);
+                            if(dat.key.compare("title")==0)
+                                tit=dat.value;
+                            if(dat.key.compare("text")==0)
+                                text=dat.value;
+                            
+                        }
+                        dialog->show(tit, text);
+                    }else if(e->action.compare("exit")==0){
+                        exit(0);
                     }
                     if(!showCamera)
                         image->loadImage(background);
@@ -127,8 +158,9 @@ class MyApp: public UI::GLBaseApp{
 		}
 
 	private:
-		Core::TCallback<MyApp> myCallBack;
-		freetype::font_data font;
+		Core::TCallback<MyApp> menuCallBack;
+                Core::TCallback<MyApp> qrCallBack;
+                freetype::font_data font;
 		freetype::font_data font11;
 		freetype::font_data font2;
                 Devices::Platform *platform;
@@ -139,6 +171,8 @@ class MyApp: public UI::GLBaseApp{
                 int showCamera;
 
 		UI::Menu *menu;
+                
+                AR::QR *qr;
                 
 		
 };

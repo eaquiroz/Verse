@@ -28,7 +28,9 @@ class DialogBalloon : public Core::DisplayObject {
 		void draw(int selection=0);
 		void setTitle(string t);
 		void setText(string t);
-
+                void show(string t, string txt);
+		void hide();
+		
 		freetype::font_data* font;
 		freetype::font_data* fontText;
                 TextField *titleTextField;
