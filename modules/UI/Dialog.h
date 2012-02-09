@@ -23,6 +23,26 @@ namespace UI {
 
 using std::string;
 
+/**
+* Dialog
+* Show a Dialog with ok and cancel buttons with text description inside.
+* \img dialog.jpg
+* Common use:
+* \code //Create dialog
+	dialog=new UI::Dialog(&font, &font11);
+	dialog->height=150;
+	dialog->width=300;
+	dialog->x=100;
+	dialog->y=100;
+	dialog->hide();
+	addChild(dialog);
+	//Show dialog
+	dialog->show("Title", "Text inside dialog\\nOther line");
+
+* @see freetype::font_data
+* @see UI::TextField
+* @see UI::Button
+*/
 class Dialog : public Core::DisplayObject {
 	public:
                 Dialog(freetype::font_data* f, freetype::font_data* ftext);

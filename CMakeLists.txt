@@ -1,6 +1,9 @@
 cmake_minimum_required (VERSION 2.6) 
 
-PROJECT(VERSE_CORE)
+PROJECT(VERSE_API)
+
+# load macros
+include(cmake/macros.cmake)
 
 # Opencv Package
 FIND_PACKAGE( OpenCV REQUIRED )
@@ -19,7 +22,7 @@ FIND_PACKAGE( LIBXML2 )
 
 #Libdecodeqr variables
 set(QR_LIBRARY libqrdecode)
-set(QR_INCLUDE ${VERSE_CORE_SOURCE_DIR}/3rdparty/libdecodeqr/include)
+set(QR_INCLUDE ${VERSE_API_SOURCE_DIR}/3rdparty/libdecodeqr/include)
 
 include_directories( 
 	${OpenGL_INCLUDE_DIR}
@@ -34,3 +37,14 @@ include_directories(
 add_subdirectory(3rdparty)
 add_subdirectory(modules)
 add_subdirectory(samples)
+
+
+#Create Doxygen code documentation.
+OPTION(INSTALL_DOC	"Set to OFF to skip build/install Documentation"            ON)
+OPTION(USE_DOT		"Set to ON to perform diagram generation with graphviz"     OFF)
+OPTION(USE_LATEX	"Set to ON to build latex documentation"                    OFF)
+OPTION(USE_CHM		"Set to ON to build CHM Windows documentation"              OFF)
+ 
+IF (INSTALL_DOC)
+	GENERATE_DOCUMENTATION(${PROJECT_SOURCE_DIR}/lib${PROJECT_NAME}.dox.in)
+ENDIF()
