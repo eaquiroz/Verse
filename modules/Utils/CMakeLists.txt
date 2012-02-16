@@ -9,4 +9,4 @@ ENDIF (NOT LIBXML2_FOUND)
 file(GLOB lib_srcs *.cpp)
 file(GLOB lib_hdrs *.h)
 
-add_library(VerseUtils  ${lib_srcs} ${lib_hdrs})
+add_library(VerseUtils STATIC ${lib_srcs} ${lib_hdrs})

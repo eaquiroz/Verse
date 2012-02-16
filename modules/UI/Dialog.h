@@ -23,20 +23,20 @@ namespace UI {
 
 using std::string;
 
-/** Dialog.
-* Show a Dialog with ok and cancel buttons with text description inside.
+/**
+* Dialog popup box with buttons. Show a Dialog with ok and cancel buttons with text description inside.
 * @image html dialog.jpg
 * Common use:
 * @code //Create dialog
-*	dialog=new UI::Dialog(&font, &font11);
-*	dialog->height=150;
-*	dialog->width=300;
-*	dialog->x=100;
-*	dialog->y=100;
-*	dialog->hide();
-*	addChild(dialog);
-*	//Show dialog
-*	dialog->show("Title", "Text inside dialog\\nOther line");
+* dialog=new UI::Dialog(&font, &font11);
+* dialog->height=150;
+* dialog->width=300;
+* dialog->x=100;
+* dialog->y=100;
+* dialog->hide();
+* addChild(dialog);
+* //Show dialog
+* dialog->show("Title", "Text inside dialog\\nOther line");
 * @endcode
 * @see freetype::font_data
 * @see UI::TextField

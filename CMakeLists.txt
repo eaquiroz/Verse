@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.6) 
 
 PROJECT(VERSE_API)
-
+SET(PROJECT_VERSION "0.1")
 # load macros
 include(cmake/macros.cmake)
 
@@ -19,10 +19,23 @@ FIND_PACKAGE( Freetype REQUIRED )
 
 # LibXML Package
 FIND_PACKAGE( LIBXML2 )
+IF (NOT LIBXML2_FOUND)
+	include_directories (${VERSE_API_SOURCE_DIR}/3rdparty/libxml2/include)
+ENDIF (NOT LIBXML2_FOUND)
 
-#Libdecodeqr variables
+
+#Libdecodeqr variables. QR
 set(QR_LIBRARY libqrdecode)
 set(QR_INCLUDE ${VERSE_API_SOURCE_DIR}/3rdparty/libdecodeqr/include)
+
+#Assimp library variables. 3d models
+set(ASSIMP_LIBRARY assimp)
+set(ASSIMP_INCLUDE ${VERSE_API_SOURCE_DIR}/3rdparty/assimp/include)
+
+#Aruco library variables. Marker detector and transform
+set(ARUCO_LIBRARY aruco)
+set(ARUCO_INCLUDE ${VERSE_API_SOURCE_DIR}/3rdparty/aruco/src)
+
 
 include_directories( 
 	${OpenGL_INCLUDE_DIR}
@@ -31,6 +44,8 @@ include_directories(
 	${FREETYPE_INCLUDE_DIR_ft2build}
         ${LIBXML2_INCLUDE_DIR}
 	${QR_INCLUDE}
+        ${ASSIMP_INCLUDE}
+        ${ARUCO_INCLUDE}
 )
 
 #Process folders

@@ -1,0 +1,8 @@
+K 10
+svn:ignore
+V 56
+libassimp.2.dylib
+libassimp.2.0.0.dylib
+libassimp.dylib
+
+END
