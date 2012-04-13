@@ -33,9 +33,14 @@ namespace UI {
 
 Model3D::Model3D() :scene(NULL) {
     x=y=z=0;
+    scalex=scaley=scalez=1.0;
     rotationx=rotationy=rotationz=0;
-    for(int i=0; i<16; i++)
-        modelview_matrix[i]=0.0;
+    for(int i=0; i<4; i++)
+        for(int j=0; j<4; j++)
+            if(i==j)
+                modelview_matrix[i*4+j]=1.0;
+            else
+                modelview_matrix[i*4+j]=0.0;
 }
 
 Model3D::~Model3D() {
@@ -280,10 +285,14 @@ void Model3D::draw(int selection) {
     glLoadIdentity();
     glLoadMatrixd(modelview_matrix);
     
-    glColor4f(1, 1, 1, 1);
     glTranslatef(x, y, z);
     glRotatef(rotationx, rotationy, rotationz, 0);
+    glScalef(scalex, scaley, scalez);
+    
     glPushMatrix();
+    
+    glColor4f(1, 1, 1, 1);
+    
     recursive_render(scene, scene->mRootNode);
     glPopMatrix();
 }

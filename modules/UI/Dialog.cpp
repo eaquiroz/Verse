@@ -58,14 +58,18 @@ void Dialog::onClickOk(Events::Event *ev)
 void Dialog::setTitle(string t)
 {
 	title=t;
-	titleTextField->label=title;
+	titleTextField->setText(title);
 }
 void Dialog::setText(string t)
 {
 	text=t;
-	textField->label=text;
+	textField->setText(text);
 }
-
+void Dialog::setWidth(int w)
+{
+	width=w;
+	textField->setWidth(w-32);
+}
 void Dialog::show(string t, string txt)
 {
 	setTitle(t);

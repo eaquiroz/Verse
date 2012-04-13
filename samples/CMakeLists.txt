@@ -32,6 +32,8 @@ add_executable (appDemo appDemo.cpp)
 add_executable (menuDemo Menu_and_QR/menuDemo.cpp) 
 add_executable (card3dmodelDemo Card_3DModel/card3dmodel.cpp) 
 
+add_subdirectory(SOAP_QR)
+
 # Link the executable to the Hello library. 
 target_link_libraries (eventDemo VerseCore VerseEvents) 
 target_link_libraries (appDemo  ${FREETYPE_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${OpenCV_LIBS} VerseCore VerseEvents VerseUI VerseDevices) 

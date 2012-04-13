@@ -115,7 +115,7 @@ struct font_data {
 //out text at the current raster position using the font ft_font.
 //The current modelview matrix will also be applied to the text. 
 void print(const font_data &ft_font, int vertical,  const char *fmt, ...) ;
-
+int getWidthSize(const font_data &font,string text);
 }
 
 #endif

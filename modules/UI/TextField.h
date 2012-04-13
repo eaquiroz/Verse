@@ -19,15 +19,20 @@
 namespace UI {
 
 using std::string;
+using std::vector;
 
 class TextField : public Core::DisplayObject {
 	public:
 		TextField(string label, freetype::font_data* f, int v);
 		void draw(int selection=0);
 		string label;
-                int vertical;
+        int vertical;
+        void setText(string text);
+        void setWidth(int w);
+
 	private:
 		freetype::font_data *font;
+		vector<string> lines;
                 
 public:
     static const int VERTICAL;

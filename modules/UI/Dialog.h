@@ -50,6 +50,7 @@ class Dialog : public Core::DisplayObject {
 		void setText(string t);
 		void show(string t, string txt);
 		void hide();
+		void setWidth(int w);
 		freetype::font_data* font;
 		freetype::font_data* fontText;
                 TextField *titleTextField;

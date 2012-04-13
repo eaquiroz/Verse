@@ -62,9 +62,8 @@ void Image2D::refreshTexture()
                     }
                  }
     }
-    
     gluBuild2DMipmaps(GL_TEXTURE_2D, 3, image.cols, image.rows, GL_BGR, GL_UNSIGNED_BYTE, data);
-    
+    delete data;    
 }
 void Image2D::draw(int selection)
 {

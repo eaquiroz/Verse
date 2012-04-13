@@ -27,7 +27,7 @@ namespace UI {
             xmlNode* rootElement=xmlData->getRootNode();
             
             name= string(CHAR(xmlGetProp (rootElement,xmlCharStrdup( "name" ) )));
-            textField->label=name;
+            textField->setText(name);
             path.push_back(name);
             
             vector<xmlNode *> subList = vector<xmlNode *> ();
@@ -69,7 +69,7 @@ namespace UI {
             for(int i=0; i<path.size(); i++){
                 text=text+" > "+path.at(i);
             }
-            textField->label=text;
+            textField->setText(text);
 
             //Get parent of item if it has and remove all subitems if visible
             MenuItem* p=item->parent;

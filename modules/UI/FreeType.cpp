@@ -73,6 +73,14 @@ inline void move_raster_y(int y) {
 	glBitmap(0,0,0,0,0,y,NULL); }
 
 
+int getWidthSize(const font_data &font,const string text){
+	int w=0;
+	for(int i=0;text[i];i++) {
+		const char_data &cdata=*font.chars[text[i]];
+    	w+=cdata.advance;
+    }
+    return w;
+}
 ///Much like Nehe's glPrint function, but modified to work
 ///with freetype fonts.
 ///For this hack, I've taken out the newline processing, though it's easy to

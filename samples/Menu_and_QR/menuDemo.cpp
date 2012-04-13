@@ -80,7 +80,7 @@ class MyApp: public UI::GLBaseApp{
                         
 			db=new UI::DialogBalloon(&font, &font11);
 			db->height=120;
-			db->width=250;
+			db->setWidth(250);
 			db->x=400;
 			db->y=300;
 			db->setTitle("Augmate");
@@ -90,7 +90,7 @@ class MyApp: public UI::GLBaseApp{
                         
 			dialog=new UI::Dialog(&font, &font11);
 			dialog->height=150;
-			dialog->width=300;
+			dialog->setWidth(300);
 			dialog->x=100;
 			dialog->y=100;
 			dialog->hide();

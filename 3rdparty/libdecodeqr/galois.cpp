@@ -392,10 +392,12 @@ namespace Galois{
                 buf->swap_col(j,i);
 
             for(i=j+1;i<count;i++){
-                Nomial *n=&(*buf->get(i,j)/(*l));
+            	Nomial A=(*buf->get(i,j)/(*l));
+                Nomial *n=&A;
                 buf->set(i,j,n);
                 for(int k=j+1;k<count;k++){
-                    Nomial *m=&(*buf->get(i,k)-*buf->get(j,k)**n);
+                	Nomial B=(*buf->get(i,k)-*buf->get(j,k)**n);
+                    Nomial *m=&B;
                     *buf->set(i,k,m);
                 }
             }
@@ -450,15 +452,18 @@ namespace Galois{
 
         for(j=0;j<lu->cols;j++){
             for(i=j+1;i<lu->cols;i++){
-                ret->set(i,&(*ret->get(i)-*ret->get(j)**lu->get(i,j)));
+            	Nomial A=(*ret->get(i)-*ret->get(j)**lu->get(i,j));
+                ret->set(i,&A);
             }
         }
         for(j=lu->cols-1;j>=0;j--){
             for(int i=j+1;i<lu->cols;i++){
-                ret->set(j,&(*ret->get(j)-
-                             *lu->get(j,i)**ret->get(i)));
+            	Nomial A=(*ret->get(j)-
+                             *lu->get(j,i)**ret->get(i));
+                ret->set(j,&A);
             }
-            ret->set(j,&(*ret->get(j)/(*lu->get(j,j))));
+            Nomial B=(*ret->get(j)/(*lu->get(j,j)));
+            ret->set(j,&B);
         }
         return(ret);
     }
@@ -556,10 +561,12 @@ namespace Galois{
             for(j=0,c=0;j<this->rows;j++){
                 Galois::Nomial *sigma=err->get(0);
                 for(i=1;i<errors;i++){
-                    sigma=&(*sigma+*err->get(i)*
+                	Nomial A=(*sigma+*err->get(i)*
                             *this->_gf->exp2nomial(j*i));
+                    sigma=&A;
                 }
-                sigma=&(*sigma+*this->_gf->exp2nomial(j*i));
+                Nomial B=(*sigma+*this->_gf->exp2nomial(j*i));
+                sigma=&B;
                 
                 if(sigma->is_zero()){
                     if(c<errors){
@@ -583,8 +590,9 @@ namespace Galois{
         Galois::Nomial *x=this->_gf->zero();
         
         for(int i=0;i<this->rows;i++){
-            x=&(*x+*this->get(i)*
+        	Nomial A=(*x+*this->get(i)*
                 *this->_gf->exp2nomial(i*d));
+            x=&A;
         }
         
         return(x->dup());

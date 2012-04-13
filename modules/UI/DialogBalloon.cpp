@@ -26,14 +26,18 @@ DialogBalloon::DialogBalloon(freetype::font_data* f, freetype::font_data* ftext 
 void DialogBalloon::setTitle(string t)
 {
 	title=t;
-	titleTextField->label=title;
+	titleTextField->setText(title);
 }
 void DialogBalloon::setText(string t)
 {
 	text=t;
-	textField->label=text;
+	textField->setText(text);
 }
-
+void DialogBalloon::setWidth(int w)
+{
+	width=w;
+	textField->setWidth(w-32);
+}
 void DialogBalloon::show(string t, string txt)
 {
 	setTitle(t);

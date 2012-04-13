@@ -32,17 +32,17 @@ class DisplayObject : public EventDispatcher {
     
  public:
     int visible;
-    int x;
-    int y;
+    float x;
+    float y;
     int width;
     int height;
-    int z;
-    int scalex;
-    int scaley;
-    int scalez;
-    int rotationx;
-    int rotationy;
-    int rotationz;
+    float z;
+    float scalex;
+    float scaley;
+    float scalez;
+    float rotationx;
+    float rotationy;
+    float rotationz;
     int rotion;
     float red,green, blue;
     float fred,fgreen, fblue;

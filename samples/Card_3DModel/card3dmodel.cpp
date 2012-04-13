@@ -67,10 +67,8 @@ class MyApp: public UI::GLBaseApp{
                         addChild(image);
                         
                         logo3d.loadModel("logo.blend");
-                        logo3d.z=-150;
                         logo3d.rotationx=-90;
-                        logo3d.rotationy=0;
-                        logo3d.rotationz=0;
+                        logo3d.scalex=logo3d.scaley=logo3d.scalez=0.3;
                         addChild(&logo3d);
                         
 			menu=new UI::Menu("menu1.xml", &font2, &font);
@@ -122,7 +120,7 @@ class MyApp: public UI::GLBaseApp{
                             TheMarkers[m].glGetModelViewMatrix(modelview_matrix);
                             logo3d.setModelMatrix(modelview_matrix);                            
                         }
-
+                        
                     }
 			
 		}
